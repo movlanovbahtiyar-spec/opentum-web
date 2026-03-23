@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opentum | Geleceğin Rezervasyon Deneyimi</title>
+    <meta name="description" content="Opentum ile restoranınızı dijital çağa taşıyın. Akıllı masa yönetimi, personel takibi ve detaylı analizler.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Remix Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    
+    <!-- Navigation -->
+    <nav class="glass-nav">
+        <div class="nav-container">
+            <div class="logo">
+                <div class="logo-portal"></div>
+                <span>Opentum</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#features">Özellikler</a></li>
+                <li><a href="#pricing">Planlar</a></li>
+                <li><a href="#faq">S.S.S.</a></li>
+                <li><a href="https://apps.apple.com/tr/app" target="_blank" class="btn-primary">Hemen Başla</a></li>
+            </ul>
+            <div class="menu-toggle" id="mobile-menu">
+                <i class="ri-menu-line"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content" data-aos="fade-up">
+                <h1 class="hero-title">Rezervasyonun <span class="text-gradient">Geleceğine</span> Hoş Geldiniz</h1>
+                <p class="hero-subtitle">Opentum, restoranınızı yönetmenin en şık ve akıllı yolu. Portal açılıyor, deneyim başlıyor.</p>
+                <div class="hero-cta">
+                    <a href="https://apps.apple.com/tr/app" target="_blank" class="btn-large">App Store'dan İndir</a>
+                    <a href="#features" class="btn-ghost">Özellikleri Keşfet</a>
+                </div>
+            </div>
+            <div class="hero-visual" data-aos="zoom-in">
+                <div class="portal-visual">
+                    <div class="portal-ring"></div>
+                    <div class="portal-core"></div>
+                    <div class="portal-particles"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Bento Grid -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header">
+                <h2>Akıllı <span class="text-gradient">Yönetim</span> Sistemleri</h2>
+                <p>Güçlü araçlar, sade arayüz. Restoranınızın her detayı kontrolünüz altında.</p>
+            </div>
+            <div class="bento-grid">
+                <div class="bento-item glass-card large" data-aos="fade-up">
+                    <i class="ri-dashboard-3-line"></i>
+                    <h3>Akıllı Panel</h3>
+                    <p>Tüm rezervasyonları, masa doluluk oranlarını ve günlük özetleri tek bir ekrandan takip edin.</p>
+                </div>
+                <div class="bento-item glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <i class="ri-group-line"></i>
+                    <h3>Personel Takibi</h3>
+                    <p>Mesai başlangıç/bitiş takibi ve performans analizleri.</p>
+                </div>
+                <div class="bento-item glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <i class="ri-bar-chart-box-line"></i>
+                    <h3>Detaylı Analizler</h3>
+                    <p>En yoğun saatlerinizi ve müşteri eğilimlerini görün.</p>
+                </div>
+                <div class="bento-item glass-card large" data-aos="fade-up" data-aos-delay="300">
+                    <i class="ri-layout-grid-line"></i>
+                    <h3>Görsel Masa Düzeni</h3>
+                    <p>Restoranınızın fiziksel yapısını ekrana yansıtın, masaları sürükle-bırak ile yönetin.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <div class="section-header">
+                <h2>Size Uygun <span class="text-gradient">Planı</span> Seçin</h2>
+            </div>
+            <div class="pricing-toggle-container" data-aos="fade-up">
+                <span class="toggle-label active" id="label-monthly">Aylık</span>
+                <label class="switch">
+                    <input type="checkbox" id="pricing-toggle">
+                    <span class="slider round"></span>
+                </label>
+                <span class="toggle-label" id="label-annual">Yıllık <span class="discount-badge">%20</span></span>
+            </div>
+            <div class="pricing-grid">
+
+                <div class="pricing-card glass-card featured" data-aos="fade-up">
+                    <div class="badge">En Popüler</div>
+                    <h3>Ultra</h3>
+                    <div class="price" data-monthly="1499₺" data-annual="14.990₺">1499₺ <span>/ ay</span></div>
+                    <p class="annual-desc" style="font-size: 13px; margin: -10px 0 20px; color: rgba(255,255,255,0.7); text-align: center;">Yıllık alımda <strong style="color: white;">aylık 1249₺'ye</strong> denk gelir.</p>
+                    <ul>
+                        <li><i class="ri-check-line"></i> Her Şey Dahil</li>
+                        <li><i class="ri-check-line"></i> Akıllı Masa Düzeni</li>
+                        <li><i class="ri-check-line"></i> Detaylı Raporlar</li>
+                        <li><i class="ri-check-line"></i> <strong>Mesai Takip Sistemi</strong></li>
+                    </ul>
+                    <a href="https://apps.apple.com/tr/app" target="_blank" class="btn-primary">App Store'dan İndir</a>
+                </div>
+                <div class="pricing-card glass-card" data-aos="fade-left">
+                    <h3>Pro</h3>
+                    <div class="price" data-monthly="899₺" data-annual="8.990₺">899₺ <span>/ ay</span></div>
+                    <p class="annual-desc" style="font-size: 13px; margin: -10px 0 20px; color: rgba(255,255,255,0.7); text-align: center;">Yıllık alımda <strong style="color: white;">aylık 749₺'ye</strong> denk gelir.</p>
+                    <ul>
+                        <li><i class="ri-check-line"></i> Gelişmiş Rezervasyon</li>
+                        <li><i class="ri-check-line"></i> Masa Kategorileri</li>
+                        <li><i class="ri-check-line"></i> Kapsamlı Analizler</li>
+                        <li><i class="ri-close-line disabled"></i> Mesai Takip Sistemi</li>
+                    </ul>
+                    <a href="https://apps.apple.com/tr/app" target="_blank" class="btn-ghost">App Store'dan İndir</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2>Sıkça Sorulan <span class="text-gradient">Sorular</span></h2>
+            </div>
+            <div class="faq-container">
+                <div class="faq-item glass-card" data-aos="fade-up" data-aos-delay="0">
+                    <div class="faq-question">
+                        <h3>Kurulum ve sisteme geçiş ne kadar sürüyor?</h3>
+                        <i class="ri-add-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Sistemimiz tamamen bulut tabanlıdır. Donanım kurulumu veya yerel ağ yapılandırması gerektirmez. Üye olduğunuz dakika masa düzeninizi sürükle-bırak ile çizip saniyeler içinde rezervasyon almaya başlayabilirsiniz.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <h3>Taahhüt veya gizli ücret var mı?</h3>
+                        <i class="ri-add-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Hayır! Opentum şeffaf bir fiyatlandırmaya sahiptir. Belirtilen aylık veya yıllık fiyatlar dışında ekstra bir sürprizle karşılaşmazsınız ve dilediğiniz ay aboneliğinizi iptal edebilirsiniz.</p>
+                    </div>
+                </div>
+                <div class="faq-item glass-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <h3>Fiyatlarınıza Kurulum & Destek dahil mi?</h3>
+                        <i class="ri-add-line"></i>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Evet, her iki paketimizde de 7/24 müşteri hizmetlerimizden tamamen ücretsiz destek alabilirsiniz.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Legal Sections (Hidden by default, shown when linked) -->
+    <section class="legal-content container" id="privacy" style="display:none; padding: 100px 0;">
+        <h2>Gizlilik Politikası</h2>
+        <div class="glass-card" style="padding: 40px; margin-top: 24px; text-align: left;">
+            <p><strong>Son Güncelleme:</strong> 23 Mart 2026</p>
+            <p>Opentum ("Biz", "Şirket", "Uygulama") olarak gizliliğinize büyük önem veriyoruz. Bu Gizlilik Politikası, mobil uygulamamızı (iOS/Apple App Store) veya web sitemizi kullandığınızda size ait kişisel verilerin nasıl toplandığını, kullanıldığını, paylaşıldığını ve korunduğunu açıklamaktadır.</p>
+            
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">1. Toplanan Veriler</h4>
+            <p style="color: var(--text-dim); margin-bottom: 15px;">Uygulamayı kullanmanız sırasında şu verileri toplayabiliriz:</p>
+            <ul style="color: var(--text-dim); margin-bottom: 20px; padding-left: 20px;">
+                <li><strong>Hesap Bilgileri:</strong> İşletme adı, yetkili e-posta adresi, telefon numarası.</li>
+                <li><strong>Operasyonel Veriler:</strong> Restoran/İşletme masa düzenleri, rezervasyon bilgileri, müşteri ad/telefon verileri, personel mesai kayıtları.</li>
+                <li><strong>Cihaz Bilgileri:</strong> İşletim sistemi versiyonu, cihaz modeli, benzersiz cihaz tanımlayıcıları, uygulama hata logları.</li>
+            </ul>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">2. Verilerin Kullanımı</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Toplanan veriler, rezervasyon sisteminin düzgün çalışmasını sağlamak, personel yönetimini kolaylaştırmak, teknik destek sunmak ve size sunulan hizmet kalitesini artırmak amacıyla işlenir. Uygulama analitikleri, sistem hatalarını tespit etmek için anonim olarak kullanılabilir.</p>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">3. Verilerin Paylaşımı</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Kullanıcı ve işletme verileriniz kesinlikle reklam amacıyla üçüncü şahıslara veya şirketlere satılmaz. Yasal bir zorunluluk (mahkeme kararı vb.) hariç tutulmak üzere verileriniz dışarıya aktarılmaz. Yalnızca işlemlerin sürdürülebilmesi için (örn. bulut sunucu sağlayıcıları, e-posta gönderim servisleri) güvenilir servis sağlayıcılarıyla kısıtlı bir şekilde veri işlenebilir.</p>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">4. Veri Güvenliği</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Kişisel verilerinizin güvenliğini sağlamak için endüstri standardı şifreleme ve güvenlik önlemlerini kullanıyoruz. Yetkisiz erişim, değiştirme veya ifşaya karşı sıkı teknik önlemler alıyoruz.</p>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">5. İletişim</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Gizlilik uygulamalarımız veya verilerinizle ilgili haklarınız (silme, düzeltme, görüntüleme talepleri) konusunda bizimle <strong>movlanovbahtiyarr@gmail.com</strong> e-posta adresi üzerinden iletişime geçebilirsiniz.</p>
+
+            <button onclick="document.getElementById('privacy').style.display='none'" class="btn-primary" style="margin-top:20px;">Anladım & Kapat</button>
+        </div>
+    </section>
+
+    <section class="legal-content container" id="terms" style="display:none; padding: 100px 0;">
+        <h2>Kullanım Koşulları</h2>
+        <div class="glass-card" style="padding: 40px; margin-top: 24px; text-align: left;">
+            <p><strong>Son Güncelleme:</strong> 23 Mart 2026</p>
+            <p>Lütfen Opentum hizmetlerini (Uygulama, Web Sitesi vb.) kullanmadan önce bu koşulları dikkatlice okuyunuz. Uygulamayı indirip kullanarak aşağıdaki şartları kabul etmiş sayılırsınız.</p>
+            
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">1. Hizmet Kapsamı ve Lisans</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Opentum size, yalnızca işletmenizin rezervasyon, masa yönetimi ve personel takibini yapması amacıyla; kişisel, devredilemez, münhasır olmayan ve iptal edilebilir bir kullanım hakkı lisansı verir. Yazılımın kaynak kodlarını kopyalamak, çoğaltmak veya dağıtmak yasaktır.</p>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">2. Kullanıcı Yükümlülükleri</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Hesabınız altında gerçekleşen tüm işlemlerden siz sorumlusunuz. Hesaba ait şifrelerin güvenliğinin sağlanması işletmenin veya kullanıcının mesuliyetindedir. Hizmeti yasadışı faaliyetler için kullanmamayı taahhüt edersiniz.</p>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">3. Abonelikler ve Ödemeler</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Opentum, aylık veya yıllık ön ödemeli abonelik planları ("Pro" ve "Ultra") sunar. Apple App Store üzerinden başlatılan abonelikler, hesap ayarları aracılığıyla yönetilebilir veya iptal edilebilir. Otomatik yenileme özelliği kapatılmadığı sürece dönem sonunda faturalandırma devam edecektir.</p>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">4. Sorumluluk Reddi</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Opentum, hizmetin kesintisiz veya %100 htasısz olacağını garanti edemez. Olası teknik arızalardan, sunucu kesintilerinden kaynaklı doğabilecek doğrudan veya dolaylı maddi/manevi zararlardan Opentum sorumlu tutulamaz.</p>
+
+            <h4 style="margin-top:20px; margin-bottom: 10px; color: var(--text-main);">5. Hizmetin Değiştirilmesi veya Sonlandırılması</h4>
+            <p style="color: var(--text-dim); margin-bottom: 20px;">Opentum, herhangi bir zamanda özellikleri güncelleyebilir, kaldırabilir veya uygulamayı önceden bildirim yapmaksızın kısmen veya tamamen sonlandırma hakkını saklı tutar. Kuralların ihlali durumunda hesapların askıya alınması veya sonlandırılması yetkimiz dahilindedir.</p>
+
+            <button onclick="document.getElementById('terms').style.display='none'" class="btn-primary" style="margin-top:20px;">Anladım & Kapat</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <div class="logo">
+                        <div class="logo-portal"></div>
+                        <span>Opentum</span>
+                    </div>
+                    <p>Geleceğin restoran yönetim platformu.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Hızlı Menü</h4>
+                    <ul>
+                        <li><a href="#home">Ana Sayfa</a></li>
+                        <li><a href="#features">Özellikler</a></li>
+                        <li><a href="#pricing">Planlar</a></li>
+                        <li><a href="javascript:void(0)" onclick="showLegal('privacy')">Gizlilik Politikası</a></li>
+                        <li><a href="javascript:void(0)" onclick="showLegal('terms')">Kullanım Koşulları</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>İletişim & Bülten</h4>
+                    <p style="margin-bottom: 16px;"><a href="mailto:movlanovbahtiyarr@gmail.com" style="color:var(--text-dim); text-decoration:none;">movlanovbahtiyarr@gmail.com</a></p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="E-posta adresiniz" class="glass-input">
+                        <button class="btn-primary" style="padding: 10px 16px;">Gönder</button>
+                    </div>
+                    <div class="social-icons" style="margin-top: 24px;">
+                        <a href="#"><i class="ri-instagram-line"></i></a>
+                        <a href="#"><i class="ri-twitter-x-line"></i></a>
+                        <a href="#"><i class="ri-linkedin-line"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Opentum. Tüm hakları saklıdır.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
