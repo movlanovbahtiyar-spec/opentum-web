@@ -15,6 +15,10 @@
     padding: 0;
     box-sizing: border-box;
     font-family: 'Instrument Sans', -apple-system, sans-serif;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 html {
@@ -28,6 +32,13 @@ body {
     overflow-x: hidden;
     line-height: 1.6;
     width: 100%;
+}
+
+input, textarea, select {
+    -webkit-user-select: text !important;
+    -moz-user-select: text !important;
+    -ms-user-select: text !important;
+    user-select: text !important;
 }
 
 .glow-bg {
@@ -817,3 +828,85 @@ footer {
         height: 300px;
     }
 }
+
+/* --- PREMIUM ANIMATION ADDITIONS --- */
+
+/* Mouse Follower Glow */
+.mouse-glow {
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.07) 0%, rgba(16, 185, 129, 0.02) 40%, transparent 70%);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    filter: blur(40px);
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* 3D Bento Tilt Perspective Setup */
+.bento-grid {
+    perspective: 1200px;
+}
+
+.bento-item {
+    transform-style: preserve-3d;
+    transform: perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1);
+    transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.4s var(--easing);
+}
+
+/* Premium Button Shine & Sweep */
+.btn-primary, .btn-ghost {
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::before, .btn-ghost::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0) 100%
+    );
+    transform: skewX(-25deg);
+    transition: none;
+}
+
+.btn-primary:hover::before, .btn-ghost:hover::before {
+    animation: shine-sweep 1.2s ease-in-out infinite;
+}
+
+@keyframes shine-sweep {
+    0% {
+        left: -150%;
+    }
+    100% {
+        left: 150%;
+    }
+}
+
+/* Smooth Blur-In Scroll Reveal */
+[data-aos] {
+    opacity: 0;
+    transform: translateY(40px) scale(0.97);
+    filter: blur(6px);
+    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 1.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+[data-aos].aos-animate {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) !important;
+    filter: blur(0) !important;
+}
+

@@ -1,23 +1,50 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // --- SECURITY & ANTI-COPY PROTECTION ---
+    // Disable right click (Context Menu)
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Disable dragging of images
+    document.addEventListener('dragstart', event => {
+        if (event.target.tagName === 'IMG') {
+            event.preventDefault();
+        }
+    });
+
+    // Disable key combinations (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S, Cmd+Opt+I)
+    document.addEventListener('keydown', event => {
+        if (
+            event.keyCode === 123 || // F12
+            (event.ctrlKey && event.shiftKey && event.keyCode === 73) || // Ctrl+Shift+I
+            (event.ctrlKey && event.shiftKey && event.keyCode === 74) || // Ctrl+Shift+J
+            (event.ctrlKey && event.shiftKey && event.keyCode === 67) || // Ctrl+Shift+C
+            (event.ctrlKey && event.keyCode === 85) || // Ctrl+U (View Source)
+            (event.ctrlKey && event.keyCode === 83) || // Ctrl+S (Save)
+            (event.metaKey && event.altKey && event.keyCode === 73) || // Cmd+Opt+I (Safari DevTools)
+            (event.metaKey && event.altKey && event.keyCode === 74) || // Cmd+Opt+J
+            (event.metaKey && event.keyCode === 85) || // Cmd+U
+            (event.metaKey && event.keyCode === 83)    // Cmd+S
+        ) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
     // Reveal animations on scroll
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.15
     };
 
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                entry.target.classList.add('aos-animate');
+                observer.unobserve(entry.target); // Animasyon bir kez tetiklensin
             }
         });
     }, observerOptions);
 
     const animatedElements = document.querySelectorAll('[data-aos]');
     animatedElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
         observer.observe(el);
     });
 
@@ -215,3 +242,60 @@ function showLegal(id) {
         });
     }
 }
+
+// --- INTERACTIVE VISUAL EFFECTS ---
+
+// 1. Mouse Follower Glow (Lerp)
+const mouseGlow = document.querySelector('.mouse-glow');
+if (mouseGlow) {
+    let mouseX = 0, mouseY = 0;
+    let glowX = 0, glowY = 0;
+    const lerpSpeed = 0.08;
+
+    window.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        if (mouseGlow.style.opacity === '0' || mouseGlow.style.opacity === '') {
+            mouseGlow.style.opacity = '1';
+        }
+    });
+
+    window.addEventListener('mouseleave', () => {
+        mouseGlow.style.opacity = '0';
+    });
+
+    function updateGlowPosition() {
+        glowX += (mouseX - glowX) * lerpSpeed;
+        glowY += (mouseY - glowY) * lerpSpeed;
+        
+        mouseGlow.style.left = `${glowX}px`;
+        mouseGlow.style.top = `${glowY}px`;
+        
+        requestAnimationFrame(updateGlowPosition);
+    }
+    requestAnimationFrame(updateGlowPosition);
+}
+
+// 2. 3D Bento Tilt Effect
+const bentoItems = document.querySelectorAll('.bento-item');
+bentoItems.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left; // x coordinate inside the card
+        const y = e.clientY - rect.top;  // y coordinate inside the card
+        
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        // Max angle of rotation = 8deg
+        const rotateX = ((centerY - y) / centerY) * 8;
+        const rotateY = ((x - centerX) / centerX) * 8;
+        
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+});
+

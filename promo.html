@@ -23,6 +23,10 @@
             padding: 0;
             box-sizing: border-box;
             font-family: 'Instrument Sans', -apple-system, sans-serif;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
         }
 
         body {
@@ -272,9 +276,26 @@
             margin-top: 30px;
             display: inline-block;
         }
+
+        /* Mouse Follow Glow */
+        .mouse-glow {
+            position: fixed;
+            width: 350px;
+            height: 350px;
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.08) 0%, rgba(16, 185, 129, 0.03) 30%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: screen;
+            filter: blur(40px);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
     </style>
 </head>
 <body>
+<div class="mouse-glow"></div>
 
 <div id="promo-container">
     <div class="background-blobs">
@@ -512,6 +533,65 @@
             screen.innerHTML = `<img src="${url}" alt="screenshot">`;
         }
     };
+
+    // --- SECURITY & INTERACTIVE ADDITIONS ---
+    // Disable right click
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // Disable dragging of images
+    document.addEventListener('dragstart', event => {
+        if (event.target.tagName === 'IMG') {
+            event.preventDefault();
+        }
+    });
+
+    // Disable keys (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S)
+    document.addEventListener('keydown', event => {
+        if (
+            event.keyCode === 123 || 
+            (event.ctrlKey && event.shiftKey && event.keyCode === 73) || 
+            (event.ctrlKey && event.shiftKey && event.keyCode === 74) || 
+            (event.ctrlKey && event.shiftKey && event.keyCode === 67) || 
+            (event.ctrlKey && event.keyCode === 85) || 
+            (event.ctrlKey && event.keyCode === 83) || 
+            (event.metaKey && event.altKey && event.keyCode === 73) || 
+            (event.metaKey && event.altKey && event.keyCode === 74) || 
+            (event.metaKey && event.keyCode === 85) || 
+            (event.metaKey && event.keyCode === 83)
+        ) {
+            event.preventDefault();
+            return false;
+        }
+    });
+
+    // Mouse Glow
+    const mouseGlow = document.querySelector('.mouse-glow');
+    if (mouseGlow) {
+        let mouseX = 0, mouseY = 0;
+        let glowX = 0, glowY = 0;
+        const lerpSpeed = 0.08;
+
+        window.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            if (mouseGlow.style.opacity === '0' || mouseGlow.style.opacity === '') {
+                mouseGlow.style.opacity = '1';
+            }
+        });
+
+        window.addEventListener('mouseleave', () => {
+            mouseGlow.style.opacity = '0';
+        });
+
+        function updateGlow() {
+            glowX += (mouseX - glowX) * lerpSpeed;
+            glowY += (mouseY - glowY) * lerpSpeed;
+            mouseGlow.style.left = `${glowX}px`;
+            mouseGlow.style.top = `${glowY}px`;
+            requestAnimationFrame(updateGlow);
+        }
+        requestAnimationFrame(updateGlow);
+    }
 </script>
 
 </body>
