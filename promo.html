@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opentum App Promo</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --primary: #10B981;
+            --primary-glow: rgba(16, 185, 129, 0.15);
+            --bg-dark: #021B15;
+            --bg-darker: #000a06;
+            --text-main: #F4FBF7;
+            --text-dim: #819B91;
+            --glass: rgba(6, 36, 28, 0.4);
+            --glass-border: rgba(16, 185, 129, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Instrument Sans', -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-darker);
+            color: var(--text-main);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #promo-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle at 50% 50%, #063729 0%, #000a06 100%);
+        }
+
+        .background-blobs {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            opacity: 0.15;
+            border-radius: 50%;
+            background: var(--primary);
+        }
+
+        /* Scenes */
+        .scene {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            opacity: 0;
+            visibility: hidden;
+            z-index: 10;
+        }
+
+        .scene.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Elements */
+        .title {
+            font-family: 'Cormorant Garamond', Georgia, serif;
+            font-size: 5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            text-align: center;
+            background: linear-gradient(135deg, #FFF 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            background-clip: text; /* Standard property */
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--text-dim);
+            text-align: center;
+            max-width: 800px;
+            font-weight: 300;
+            line-height: 1.4;
+        }
+
+        .device-mockup {
+            width: 320px;
+            height: 650px;
+            background: #000;
+            border-radius: 54px;
+            border: 14px solid #1e293b;
+            box-shadow: 
+                0 50px 100px -20px rgba(0,0,0,0.8),
+                0 0 40px rgba(45, 212, 191, 0.2),
+                inset 0 0 20px rgba(255,255,255,0.1);
+            position: relative;
+            margin-top: 40px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-shrink: 0;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+        /* Dynamic Island */
+        .device-mockup::after {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 25px;
+            background: #000;
+            border-radius: 20px;
+            z-index: 10;
+        }
+
+        /* Side Buttons */
+        .device-mockup::before {
+            content: '';
+            position: absolute;
+            left: -18px;
+            top: 100px;
+            width: 4px;
+            height: 60px;
+            background: #1e293b;
+            border-radius: 2px 0 0 2px;
+            box-shadow: 
+                0 80px 0 #1e293b,
+                350px 40px 0 #1e293b; /* Power button on the other side */
+        }
+
+        .device-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            border-radius: 40px;
+        }
+
+        /* Screen Reflection */
+        .device-reflection {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 50%);
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .device-screen img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            background: #000;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Play Button Overlay */
+        #controls {
+            position: absolute;
+            bottom: 40px;
+            z-index: 100;
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn {
+            padding: 12px 32px;
+            border-radius: 100px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--bg-darker);
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        .progress-bar-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255,255,255,0.1);
+            z-index: 101;
+        }
+
+        #progress-bar {
+            height: 100%;
+            background: var(--primary);
+            width: 0%;
+        }
+
+        /* Responsive Layout for Split Scenes */
+        .split-scene {
+            flex-direction: row !important;
+            justify-content: space-around !important;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .content-area {
+            flex: 1;
+            text-align: left;
+            padding-right: 50px;
+        }
+
+        .content-area .title {
+            text-align: left;
+            font-size: 3.5rem;
+        }
+
+        .content-area .subtitle {
+            text-align: left;
+        }
+
+        /* OST Captions */
+        .caption {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            padding: 10px 25px;
+            border-radius: 12px;
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 1.2rem;
+            margin-top: 30px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="promo-container">
+    <div class="background-blobs">
+        <div class="blob" style="width: 400px; height: 400px; top: -100px; left: -100px;"></div>
+        <div class="blob" style="width: 500px; height: 500px; bottom: -150px; right: -150px; background: #059669;"></div>
+    </div>
+
+    <!-- Scene 1: Intro -->
+    <!-- Background Music -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="assets/promo_music.mp3?v=2" type="audio/mpeg">
+    </audio>
+
+    <div id="audio-unlocker" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 3000; background: rgba(2, 27, 21, 0.96); display: flex; flex-direction: column; align-items: center; justify-content: center; backdrop-filter: blur(10px);">
+        <div style="font-size: 3rem; margin-bottom: 20px;">🎵</div>
+        <h2 style="color: white; margin-bottom: 30px; font-weight: 300;">Opentum Deneyimine Hazır mısınız?</h2>
+        <button class="btn btn-primary" onclick="unlockAudio()">Sesi Aç ve Başlat</button>
+        <p style="color: var(--text-dim); margin-top: 20px; font-size: 0.8rem;">* Tarayıcı kısıtlamaları nedeniyle ses için tıklamanız gerekmektedir.</p>
+    </div>
+
+    <div class="scene" id="scene-1">
+        <img src="assets/logo.png" alt="Logo" style="width: 120px; margin-bottom: 30px;">
+        <div class="title">Opentum</div>
+        <div class="subtitle">İşletmenizin Dijital Dönüşüm Merkezi. Opentum ile karmaşayı sona erdirin, profesyonelliği her adımda standart hale getirin.</div>
+        <div class="caption">Akıllı. Basit. Modern.</div>
+    </div>
+
+    <!-- Scene 2: Dashboard -->
+    <div class="scene split-scene" id="scene-2">
+        <div class="content-area">
+            <div class="title">Operasyonel Hakimiyet</div>
+            <div class="subtitle">Canlı dashboard ile işletmenizin nabzını tutun. Doluluk oranlarını, bekleyen rezervasyonları ve aktif personeli saniyeler içinde, anlık olarak analiz edin.</div>
+            <div class="caption">Gerçek Zamanlı Veri Akışı</div>
+        </div>
+        <div class="device-mockup">
+            <div class="device-screen" id="screen-dashboard">
+                <div class="device-reflection"></div>
+                <img src="assets/dashboard2.png" alt="Dashboard">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 3: Analytics -->
+    <div class="scene split-scene" id="scene-3">
+        <div class="device-mockup">
+            <div class="device-screen" id="screen-analytics">
+                <div class="device-reflection"></div>
+                <img src="assets/analytics.png" alt="Analytics">
+            </div>
+        </div>
+        <div class="content-area" style="padding-right: 0; padding-left: 50px;">
+            <div class="title">Stratejik Analizler</div>
+            <div class="subtitle">Veriye dayalı büyüme stratejileri geliştirin. Yoğun saatleri öngörün, müşteri eğilimlerini şık grafiklerle inceleyin ve karlılığınızı artıran kararlar alın.</div>
+            <div class="caption">Geleceği Öngörün</div>
+        </div>
+    </div>
+
+    <!-- Scene 4: Sidebar Menu -->
+    <div class="scene split-scene" id="scene-4">
+        <div class="content-area">
+            <div class="title">Sezgisel Deneyim</div>
+            <div class="subtitle">Karmaşık yönetim süreçlerini tek bir dokunuşla basitleştirin. Modern menü yapısıyla işletme ayarlarından vardiya düzenine her şeye anında erişin.</div>
+            <div class="caption">Kusursuz Arayüz</div>
+        </div>
+        <div class="device-mockup">
+            <div class="device-screen" id="screen-menu">
+                <div class="device-reflection"></div>
+                <img src="assets/menu2.png" alt="Menu">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 5: Shift Planning -->
+    <div class="scene split-scene" id="scene-5">
+        <div class="device-mockup">
+            <div class="device-screen" id="screen-shifts">
+                <div class="device-reflection"></div>
+                <img src="assets/shifts.png" alt="Shifts">
+            </div>
+        </div>
+        <div class="content-area" style="padding-right: 0; padding-left: 50px;">
+            <div class="title">Vardiya Senkronizasyonu</div>
+            <div class="subtitle">Haftalık çalışma planlarını saniyeler içinde oluşturun. Personel çakışmalarını önleyin, görev dağılımını optimize edin ve ekip verimliliğini zirveye taşıyın.</div>
+            <div class="caption">Organize Operasyon</div>
+        </div>
+    </div>
+
+    <!-- Scene 6: Staff Performance -->
+    <div class="scene split-scene" id="scene-6">
+        <div class="content-area">
+            <div class="title">Şeffaf Personel Yönetimi</div>
+            <div class="subtitle">Check-in/Check-out takibi ve otomatik performans raporları. Adil, şeffaf ve veriye dayalı bir ekip yönetim sistemine geçiş yapın.</div>
+            <div class="caption">Ekip Gücü & Güven</div>
+        </div>
+        <div class="device-mockup">
+            <div class="device-screen" id="screen-staff">
+                <div class="device-reflection"></div>
+                <img src="assets/staff.png" alt="Staff">
+            </div>
+        </div>
+    </div>
+
+    <!-- Scene 7: Outro -->
+    <div class="scene" id="scene-7">
+        <div class="title">Şimdi Başlayın</div>
+        <div class="subtitle">Geleceğin işletmesi sizi bekliyor. Opentum ile her adımda hız, her rezervasyonda kusursuzluk ve her personelde yüksek verimlilik.</div>
+        <div class="device-mockup" style="width: 200px; height: 200px; margin-top: 20px; border-radius: 50%; border: none;">
+             <div class="device-screen" style="background: transparent;">
+                <img src="assets/logo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+             </div>
+        </div>
+        <div class="caption">Opentum. Standartları Yeniden Belirleyin.</div>
+    </div>
+
+    <div id="controls" style="display: none;">
+        <button class="btn btn-primary" onclick="startPromo()">Tanıtımı Oynat</button>
+    </div>
+
+    <div class="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+</div>
+
+<script>
+    const tl = gsap.timeline({ paused: true });
+    
+    function initAnimations() {
+        const duration = 8; // Snappier 8s duration
+        
+        // Initial state
+        gsap.set(".scene", { opacity: 0, visibility: 'hidden' });
+        gsap.set(".device-mockup", { y: 100, opacity: 0, rotateX: 0, rotateY: 0, rotateZ: 0, scale: 0.95 });
+        gsap.set(".title, .subtitle, .caption", { y: 30, opacity: 0 });
+
+        // Scene 1: Intro
+        tl.to("#scene-1", { opacity: 1, visibility: 'visible', duration: 1 })
+          .to("#scene-1 .title", { opacity: 1, y: 0, duration: 1.2, ease: "power2.out" })
+          .to("#scene-1 .subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.5")
+          .to("#scene-1", { opacity: 0, scale: 1.1, duration: 1, ease: "power2.in", delay: duration });
+
+        // Scene 2: Dashboard (Simple Slide)
+        tl.to("#scene-2", { opacity: 1, visibility: 'visible', duration: 0.1 })
+          .to("#scene-2 .device-mockup", { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" })
+          .to("#scene-2 .title", { opacity: 1, y: 0, duration: 1 }, "-=1")
+          .to("#scene-2 .subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
+          .to("#scene-2 .caption", { opacity: 1, y: 0, duration: 1 }, "-=0.6")
+          .to("#scene-2", { opacity: 0, x: -50, duration: 1, ease: "power2.in", delay: duration });
+
+        // Scene 3: Analytics (Simple Slide)
+        tl.to("#scene-3", { opacity: 1, visibility: 'visible', duration: 0.1 })
+          .to("#scene-3 .device-mockup", { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" })
+          .to("#scene-3 .title", { opacity: 1, y: 0, duration: 1 }, "-=1")
+          .to("#scene-3 .subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
+          .to("#scene-3 .caption", { opacity: 1, y: 0, duration: 1 }, "-=0.6")
+          .to("#scene-3", { opacity: 0, x: 50, duration: 1, ease: "power2.in", delay: duration });
+
+        // Scene 4: Menu
+        tl.to("#scene-4", { opacity: 1, visibility: 'visible', duration: 0.1 })
+          .to("#scene-4 .device-mockup", { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" })
+          .to("#scene-4 .title", { opacity: 1, y: 0, duration: 1 }, "-=1")
+          .to("#scene-4 .subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
+          .to("#scene-4 .caption", { opacity: 1, y: 0, duration: 1 }, "-=0.6")
+          .to("#scene-4", { opacity: 0, y: -50, duration: 1, ease: "power2.in", delay: duration });
+
+        // Scene 5: Shifts
+        tl.to("#scene-5", { opacity: 1, visibility: 'visible', duration: 0.1 })
+          .to("#scene-5 .device-mockup", { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" })
+          .to("#scene-5 .title", { opacity: 1, y: 0, duration: 1 }, "-=1")
+          .to("#scene-5 .subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
+          .to("#scene-5 .caption", { opacity: 1, y: 0, duration: 1 }, "-=0.6")
+          .to("#scene-5", { opacity: 0, y: 50, duration: 1, ease: "power2.in", delay: duration });
+
+        // Scene 6: Staff
+        tl.to("#scene-6", { opacity: 1, visibility: 'visible', duration: 0.1 })
+          .to("#scene-6 .device-mockup", { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" })
+          .to("#scene-6 .title", { opacity: 1, y: 0, duration: 1 }, "-=1")
+          .to("#scene-6 .subtitle", { opacity: 1, y: 0, duration: 1 }, "-=0.8")
+          .to("#scene-6 .caption", { opacity: 1, y: 0, duration: 1 }, "-=0.6")
+          .to("#scene-6", { opacity: 0, scale: 1.2, duration: 1, ease: "power2.in", delay: duration });
+
+        // Scene 7: Outro
+        tl.to("#scene-7", { opacity: 1, visibility: 'visible', duration: 1.5 })
+          .to("#scene-7 .title", { scale: 1, opacity: 1, duration: 1.5, ease: "power2.out" })
+          .to("#scene-7 .subtitle", { opacity: 1, y: 0, duration: 1 }, "-=1")
+          .to("#scene-7 .device-mockup", { y: 0, opacity: 1, duration: 1.5, ease: "power2.out" }, "-=0.8");
+
+        // Simple Floating
+        gsap.to(".device-mockup", {
+            y: "-=10",
+            duration: 3,
+            repeat: -1,
+            yoyo: true,
+            ease: "sine.inOut"
+        });
+
+        // Progress Bar
+        tl.to("#progress-bar", { width: "100%", duration: tl.totalDuration(), ease: "none" }, 0);
+    }
+
+    function unlockAudio() {
+        const bgMusic = document.getElementById('bg-music');
+        const unlocker = document.getElementById('audio-unlocker');
+        unlocker.style.display = 'none';
+        startPromo();
+
+        try {
+            const playPromise = bgMusic.play();
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    bgMusic.volume = 0;
+                    gsap.to(bgMusic, { volume: 0.5, duration: 2 });
+                }).catch(e => console.error("BG Müzik çalınamadı:", e));
+            }
+        } catch (e) {
+            console.error("BG Ses oynatma hatası:", e);
+        }
+    }
+
+    function startPromo() {
+        document.getElementById('controls').style.display = 'none';
+        initAnimations();
+        tl.play();
+    }
+
+    window.onload = () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('autostart') === 'true') {
+            startPromo();
+        }
+    };
+
+    window.setScreenshot = (id, url) => {
+        const screen = document.getElementById(id);
+        if (screen) {
+            screen.innerHTML = `<img src="${url}" alt="screenshot">`;
+        }
+    };
+</script>
+
+</body>
+</html>

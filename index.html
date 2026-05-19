@@ -3,18 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Opentum | Geleceğin Rezervasyon Deneyimi</title>
-    <meta name="description" content="Opentum ile restoranınızı dijital çağa taşıyın. Akıllı masa yönetimi, personel takibi ve detaylı analizler.">
+    <title>Opentum | Geleceğin İşletme Yönetim Platformu</title>
+    <meta name="description" content="Opentum ile işletmenizi dijital çağa taşıyın. Akıllı masa yönetimi, personel mesai takibi, detaylı analizler ve gelişmiş rezervasyon.">
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <!-- Remix Icons -->
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
+    <script src="translations.js"></script>
 </head>
 <body>
     <div class="glow-bg"></div>
@@ -26,11 +27,19 @@
                 <div class="logo-portal"></div>
                 <span>Opentum</span>
             </div>
+            
+            <div class="lang-switcher">
+                <button class="lang-btn active" data-lang="tr" onclick="setLanguage('tr')">TR</button>
+                <button class="lang-btn" data-lang="en" onclick="setLanguage('en')">EN</button>
+            </div>
+
             <ul class="nav-links">
-                <li><a href="#features">Özellikler</a></li>
-                <li><a href="#pricing">Planlar</a></li>
-                <li><a href="#faq">S.S.S.</a></li>
-                <li><a href="https://apps.apple.com/tr/app" target="_blank" class="btn-primary">Hemen Başla</a></li>
+                <li><a href="#features" data-i18n="nav_features">Özellikler</a></li>
+                <li><a href="#pricing" data-i18n="nav_pricing">Planlar</a></li>
+                <li><a href="#faq" data-i18n="nav_faq">S.S.S.</a></li>
+                <li><a href="#contact-form" data-i18n="nav_support">Destek</a></li>
+                <li><a href="promo.html?v=12" target="_blank" style="color:var(--primary);" data-i18n="nav_promo">Uygulamayı Tanıyın</a></li>
+                <li><a href="https://apps.apple.com/us/app/opentum/id6760701724" target="_blank" class="app-store-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style="height: 40px;"></a></li>
             </ul>
             <div class="menu-toggle" id="mobile-menu">
                 <i class="ri-menu-line"></i>
@@ -42,11 +51,11 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content" data-aos="fade-up">
-                <h1 class="hero-title">Rezervasyonun <span class="text-gradient">Geleceğine</span> Hoş Geldiniz</h1>
-                <p class="hero-subtitle">Opentum, restoranınızı yönetmenin en şık ve akıllı yolu. Portal açılıyor, deneyim başlıyor.</p>
+                <h1 class="hero-title" data-i18n="hero_title">İşletme Yönetiminin <span class="text-gradient">Geleceğine</span> Hoş Geldiniz</h1>
+                <p class="hero-subtitle" data-i18n="hero_subtitle">Opentum; rezervasyon, masa düzeni, personel takibi ve analizleri tek bir portalda birleştiren en akıllı platform.</p>
                 <div class="hero-cta">
-                    <a href="https://apps.apple.com/tr/app" target="_blank" class="btn-large">App Store'dan İndir</a>
-                    <a href="#features" class="btn-ghost">Özellikleri Keşfet</a>
+                    <a href="https://apps.apple.com/us/app/opentum/id6760701724" target="_blank" class="app-store-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="Download on App Store" style="height: 60px;"></a>
+                    <a href="#features" class="btn-ghost" data-i18n="hero_cta_discover">Özellikleri Keşfet</a>
                 </div>
             </div>
             <div class="hero-visual" data-aos="zoom-in">
@@ -59,33 +68,35 @@
         </div>
     </section>
 
+
+
     <!-- Features Bento Grid -->
     <section class="features" id="features">
         <div class="container">
             <div class="section-header">
-                <h2>Akıllı <span class="text-gradient">Yönetim</span> Sistemleri</h2>
-                <p>Güçlü araçlar, sade arayüz. Restoranınızın her detayı kontrolünüz altında.</p>
+                <h2 data-i18n="section_features_title">Akıllı <span class="text-gradient">Yönetim</span> Sistemleri</h2>
+                <p data-i18n="section_features_subtitle">Güçlü araçlar, sade arayüz. Restoranınızın her detayı kontrolünüz altında.</p>
             </div>
             <div class="bento-grid">
                 <div class="bento-item glass-card large" data-aos="fade-up">
                     <i class="ri-dashboard-3-line"></i>
-                    <h3>Akıllı Panel</h3>
-                    <p>Tüm rezervasyonları, masa doluluk oranlarını ve günlük özetleri tek bir ekrandan takip edin.</p>
+                    <h3 data-i18n="feature_1_title">Akıllı Panel</h3>
+                    <p data-i18n="feature_1_desc">Tüm rezervasyonları, masa doluluk oranlarını ve günlük özetleri tek bir ekrandan takip edin.</p>
                 </div>
                 <div class="bento-item glass-card" data-aos="fade-up" data-aos-delay="100">
                     <i class="ri-group-line"></i>
-                    <h3>Personel Takibi</h3>
-                    <p>Mesai başlangıç/bitiş takibi ve performans analizleri.</p>
+                    <h3 data-i18n="feature_2_title">Personel Takibi</h3>
+                    <p data-i18n="feature_2_desc">Mesai başlangıç/bitiş takibi ve performans analizleri.</p>
                 </div>
                 <div class="bento-item glass-card" data-aos="fade-up" data-aos-delay="200">
                     <i class="ri-bar-chart-box-line"></i>
-                    <h3>Detaylı Analizler</h3>
-                    <p>En yoğun saatlerinizi ve müşteri eğilimlerini görün.</p>
+                    <h3 data-i18n="feature_3_title">Detaylı Analizler</h3>
+                    <p data-i18n="feature_3_desc">En yoğun saatlerinizi ve müşteri eğilimlerini görün.</p>
                 </div>
                 <div class="bento-item glass-card large" data-aos="fade-up" data-aos-delay="300">
                     <i class="ri-layout-grid-line"></i>
-                    <h3>Görsel Masa Düzeni</h3>
-                    <p>Restoranınızın fiziksel yapısını ekrana yansıtın, masaları sürükle-bırak ile yönetin.</p>
+                    <h3 data-i18n="feature_4_title">Görsel Masa Düzeni</h3>
+                    <p data-i18n="feature_4_desc">Restoranınızın fiziksel yapısını ekrana yansıtın, masaları sürükle-bırak ile yönetin.</p>
                 </div>
             </div>
         </div>
@@ -95,22 +106,22 @@
     <section class="pricing" id="pricing">
         <div class="container">
             <div class="section-header">
-                <h2>Size Uygun <span class="text-gradient">Planı</span> Seçin</h2>
+                <h2 data-i18n="pricing_title">Size Uygun <span class="text-gradient">Planı</span> Seçin</h2>
             </div>
             <div class="pricing-toggle-container" data-aos="fade-up">
-                <span class="toggle-label active" id="label-monthly">Aylık</span>
+                <span class="toggle-label active" id="label-monthly" data-i18n="price_monthly">Aylık</span>
                 <label class="switch">
                     <input type="checkbox" id="pricing-toggle">
                     <span class="slider round"></span>
                 </label>
-                <span class="toggle-label" id="label-annual">Yıllık <span class="discount-badge">%20</span></span>
+                <span class="toggle-label" id="label-annual" data-i18n="price_annual">Yıllık <span class="discount-badge">%20</span></span>
             </div>
             <div class="pricing-grid">
 
                 <div class="pricing-card glass-card featured" data-aos="fade-up">
                     <div class="badge">En Popüler</div>
                     <h3>Ultra</h3>
-                    <div class="price" data-monthly="1499₺" data-annual="14.990₺">1499₺ <span>/ ay</span></div>
+                    <div class="price" data-monthly="1499₺" data-annual="14.999₺">1499₺ <span>/ ay</span></div>
                     <p class="annual-desc" style="font-size: 13px; margin: -10px 0 20px; color: rgba(255,255,255,0.7); text-align: center;">Yıllık alımda <strong style="color: white;">aylık 1249₺'ye</strong> denk gelir.</p>
                     <ul>
                         <li><i class="ri-check-line"></i> Her Şey Dahil</li>
@@ -118,11 +129,11 @@
                         <li><i class="ri-check-line"></i> Detaylı Raporlar</li>
                         <li><i class="ri-check-line"></i> <strong>Mesai Takip Sistemi</strong></li>
                     </ul>
-                    <a href="https://apps.apple.com/tr/app" target="_blank" class="btn-primary">App Store'dan İndir</a>
+                    <a href="https://apps.apple.com/us/app/opentum/id6760701724" target="_blank" class="app-store-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style="height: 50px;"></a>
                 </div>
                 <div class="pricing-card glass-card" data-aos="fade-left">
                     <h3>Pro</h3>
-                    <div class="price" data-monthly="899₺" data-annual="8.990₺">899₺ <span>/ ay</span></div>
+                    <div class="price" data-monthly="899₺" data-annual="8.999₺">899₺ <span>/ ay</span></div>
                     <p class="annual-desc" style="font-size: 13px; margin: -10px 0 20px; color: rgba(255,255,255,0.7); text-align: center;">Yıllık alımda <strong style="color: white;">aylık 749₺'ye</strong> denk gelir.</p>
                     <ul>
                         <li><i class="ri-check-line"></i> Gelişmiş Rezervasyon</li>
@@ -130,7 +141,7 @@
                         <li><i class="ri-check-line"></i> Kapsamlı Analizler</li>
                         <li><i class="ri-close-line disabled"></i> Mesai Takip Sistemi</li>
                     </ul>
-                    <a href="https://apps.apple.com/tr/app" target="_blank" class="btn-ghost">App Store'dan İndir</a>
+                    <a href="https://apps.apple.com/us/app/opentum/id6760701724" target="_blank" class="app-store-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Download_on_the_App_Store_Badge.svg" alt="App Store" style="height: 50px;"></a>
                 </div>
             </div>
         </div>
@@ -140,34 +151,34 @@
     <section class="faq" id="faq">
         <div class="container">
             <div class="section-header" data-aos="fade-up">
-                <h2>Sıkça Sorulan <span class="text-gradient">Sorular</span></h2>
+                <h2 data-i18n="faq_title">Sıkça Sorulan <span class="text-gradient">Sorular</span></h2>
             </div>
             <div class="faq-container">
                 <div class="faq-item glass-card" data-aos="fade-up" data-aos-delay="0">
                     <div class="faq-question">
-                        <h3>Kurulum ve sisteme geçiş ne kadar sürüyor?</h3>
+                        <h3 data-i18n="faq_1_q">Kurulum ve sisteme geçiş ne kadar sürüyor?</h3>
                         <i class="ri-add-line"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Sistemimiz tamamen bulut tabanlıdır. Donanım kurulumu veya yerel ağ yapılandırması gerektirmez. Üye olduğunuz dakika masa düzeninizi sürükle-bırak ile çizip saniyeler içinde rezervasyon almaya başlayabilirsiniz.</p>
+                        <p data-i18n="faq_1_a">Sistemimiz tamamen bulut tabanlıdır. Donanım kurulumu veya yerel ağ yapılandırması gerektirmez. Üye olduğunuz dakika masa düzeninizi sürükle-bırak ile çizip saniyeler içinde rezervasyon almaya başlayabilirsiniz.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card" data-aos="fade-up" data-aos-delay="100">
                     <div class="faq-question">
-                        <h3>Taahhüt veya gizli ücret var mı?</h3>
+                        <h3 data-i18n="faq_2_q">Taahhüt veya gizli ücret var mı?</h3>
                         <i class="ri-add-line"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Hayır! Opentum şeffaf bir fiyatlandırmaya sahiptir. Belirtilen aylık veya yıllık fiyatlar dışında ekstra bir sürprizle karşılaşmazsınız ve dilediğiniz ay aboneliğinizi iptal edebilirsiniz.</p>
+                        <p data-i18n="faq_2_a">Hayır! Opentum şeffaf bir fiyatlandırmaya sahiptir. Belirtilen aylık veya yıllık fiyatlar dışında ekstra bir sürprizle karşılaşmazsınız ve dilediğiniz ay aboneliğinizi iptal edebilirsiniz.</p>
                     </div>
                 </div>
                 <div class="faq-item glass-card" data-aos="fade-up" data-aos-delay="200">
                     <div class="faq-question">
-                        <h3>Fiyatlarınıza Kurulum & Destek dahil mi?</h3>
+                        <h3 data-i18n="faq_3_q">Fiyatlarınıza Kurulum & Destek dahil mi?</h3>
                         <i class="ri-add-line"></i>
                     </div>
                     <div class="faq-answer">
-                        <p>Evet, her iki paketimizde de 7/24 müşteri hizmetlerimizden tamamen ücretsiz destek alabilirsiniz.</p>
+                        <p data-i18n="faq_3_a">Evet, her iki paketimizde de 7/24 müşteri hizmetlerimizden tamamen ücretsiz destek alabilirsiniz.</p>
                     </div>
                 </div>
             </div>
@@ -230,6 +241,87 @@
         </div>
     </section>
 
+    <!-- Contact Section -->
+    <section class="contact-section" id="contact-form">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <h2 data-i18n="contact_title">Profesyonel <span class="text-gradient">Destek</span> & İletişim</h2>
+                <p data-i18n="contact_subtitle">İşletmeniz için en doğru adımı birlikte atalım. Teknik destek veya üyelik sorularınız için buradayız.</p>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="contact-info" data-aos="fade-right">
+                    <div class="info-card glass-card">
+                        <i class="ri-whatsapp-line"></i>
+                        <div>
+                            <h4 data-i18n="contact_wa_title">Hızlı Destek (WhatsApp)</h4>
+                            <p>+90 552 516 59 98</p>
+                            <a href="https://wa.me/905525165998" target="_blank" class="text-gradient" data-i18n="contact_wa_cta">Hemen Mesaj Gönder →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <i class="ri-mail-send-line"></i>
+                        <div>
+                            <h4 data-i18n="contact_email_title">E-Posta</h4>
+                            <p>movlanovbahtiyarr@gmail.com</p>
+                            <a href="mailto:movlanovbahtiyarr@gmail.com" class="text-gradient" data-i18n="contact_email_cta">Bize Yazın →</a>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card glass-card">
+                        <i class="ri-map-pin-line"></i>
+                        <div>
+                            <h4 data-i18n="contact_location_title">Merkez</h4>
+                            <p>Istanbul / Türkiye</p>
+                            <span style="color:var(--text-dim); font-size: 13px;" data-i18n="contact_location_desc">Dijital Çözümler Merkezi</span>
+                        </div>
+                    </div>
+
+                    <div class="social-links-minimal">
+                        <a href="#"><i class="ri-instagram-fill"></i></a>
+                        <a href="#"><i class="ri-twitter-x-fill"></i></a>
+                        <a href="#"><i class="ri-linkedin-box-fill"></i></a>
+                    </div>
+                </div>
+
+                <div class="contact-form-card glass-card" data-aos="fade-left">
+                    <form id="main-contact-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-i18n="form_name_label">Adınız Soyadınız</label>
+                                <input type="text" class="glass-input" placeholder="Ahmet Yılmaz" required data-i18n="form_name_placeholder">
+                            </div>
+                            <div class="form-group">
+                                <label data-i18n="form_business_label">İşletme Adı</label>
+                                <input type="text" class="glass-input" placeholder="Opentum Kafe" required data-i18n="form_business_placeholder">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_email_label">E-posta Adresiniz</label>
+                            <input type="email" class="glass-input" placeholder="ahmet@example.com" required data-i18n="form_email_placeholder">
+                        </div>
+                        <div class="form-group">
+                            <label data-i18n="form_msg_label">Size Nasıl Yardımcı Olabiliriz?</label>
+                            <textarea class="glass-textarea" placeholder="Mesajınızı buraya yazın..." required data-i18n="form_msg_placeholder"></textarea>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; padding: 18px; margin-top: 10px; font-weight: 800; letter-spacing: 1px;" data-i18n="form_submit">
+                            BİZE ULAŞIN <i class="ri-send-plane-fill" style="margin-left: 8px;"></i>
+                        </button>
+                    </form>
+                    <div id="form-success" style="display: none; text-align: center; padding: 40px 20px;">
+                        <div class="success-icon">
+                            <i class="ri-checkbox-circle-fill"></i>
+                        </div>
+                        <h3 style="margin-top: 20px; font-size: 24px;" data-i18n="form_success_title">Mesajınız İletildi!</h3>
+                        <p style="color: var(--text-dim); margin-top: 10px;" data-i18n="form_success_desc">En kısa sürede sizinle iletişime geçeceğiz.</p>
+                        <button onclick="location.reload()" class="btn-ghost" style="margin-top: 24px; padding: 10px 24px;" data-i18n="form_success_btn">Yeni Mesaj</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer id="contact">
         <div class="container">
@@ -239,24 +331,25 @@
                         <div class="logo-portal"></div>
                         <span>Opentum</span>
                     </div>
-                    <p>Geleceğin restoran yönetim platformu.</p>
+                    <p data-i18n="footer_desc">Geleceğin restoran yönetim platformu.</p>
                 </div>
                 <div class="footer-links">
-                    <h4>Hızlı Menü</h4>
+                    <h4 data-i18n="footer_quick_menu">Hızlı Menü</h4>
                     <ul>
-                        <li><a href="#home">Ana Sayfa</a></li>
-                        <li><a href="#features">Özellikler</a></li>
-                        <li><a href="#pricing">Planlar</a></li>
-                        <li><a href="javascript:void(0)" onclick="showLegal('privacy')">Gizlilik Politikası</a></li>
-                        <li><a href="javascript:void(0)" onclick="showLegal('terms')">Kullanım Koşulları</a></li>
+                        <li><a href="#home" data-i18n="footer_home">Ana Sayfa</a></li>
+                        <li><a href="#features" data-i18n="nav_features">Özellikler</a></li>
+                        <li><a href="#pricing" data-i18n="nav_pricing">Planlar</a></li>
+                        <li><a href="promo.html?v=12" target="_blank" data-i18n="nav_promo">Uygulamayı Tanıyın</a></li>
+                        <li><a href="javascript:void(0)" onclick="showLegal('privacy')" data-i18n="footer_privacy">Gizlilik Politikası</a></li>
+                        <li><a href="javascript:void(0)" onclick="showLegal('terms')" data-i18n="footer_terms">Kullanım Koşulları</a></li>
                     </ul>
                 </div>
                 <div class="footer-contact">
-                    <h4>İletişim & Bülten</h4>
+                    <h4 data-i18n="footer_newsletter">İletişim & Bülten</h4>
                     <p style="margin-bottom: 16px;"><a href="mailto:movlanovbahtiyarr@gmail.com" style="color:var(--text-dim); text-decoration:none;">movlanovbahtiyarr@gmail.com</a></p>
                     <div class="newsletter-form">
-                        <input type="email" placeholder="E-posta adresiniz" class="glass-input">
-                        <button class="btn-primary" style="padding: 10px 16px;">Gönder</button>
+                        <input type="email" placeholder="E-posta adresiniz" class="glass-input" data-i18n="footer_newsletter_placeholder">
+                        <button class="btn-primary" style="padding: 10px 16px;" data-i18n="footer_newsletter_btn">Gönder</button>
                     </div>
                     <div class="social-icons" style="margin-top: 24px;">
                         <a href="#"><i class="ri-instagram-line"></i></a>
@@ -266,7 +359,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Opentum. Tüm hakları saklıdır.</p>
+                <p data-i18n="footer_rights">&copy; 2026 Opentum. Tüm hakları saklıdır.</p>
             </div>
         </div>
     </footer>

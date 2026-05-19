@@ -138,6 +138,36 @@ document.addEventListener('DOMContentLoaded', () => {
             portal.appendChild(particle);
         }
     }
+    
+    // Contact Form Submission
+    const contactForm = document.getElementById('main-contact-form');
+    const formSuccess = document.getElementById('form-success');
+    
+    if (contactForm && formSuccess) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // In a real app, you would send this to a backend/API
+            // For now, we simulate success with a premium animation
+            contactForm.style.transition = 'all 0.5s ease';
+            contactForm.style.opacity = '0';
+            contactForm.style.transform = 'translateY(-20px)';
+            
+            setTimeout(() => {
+                contactForm.style.display = 'none';
+                formSuccess.style.display = 'block';
+                formSuccess.style.opacity = '0';
+                formSuccess.style.transform = 'translateY(20px)';
+                
+                // Trigger success entrance
+                setTimeout(() => {
+                    formSuccess.style.transition = 'all 0.5s ease';
+                    formSuccess.style.opacity = '1';
+                    formSuccess.style.transform = 'translateY(0)';
+                }, 50);
+            }, 500);
+        });
+    }
 });
 
 // CSS for Particles (Injecting via JS for simplicity or add to style.css)
